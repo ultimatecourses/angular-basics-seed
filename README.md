@@ -1,6 +1,6 @@
 <h1 align="center">
 <img width="40" valign="bottom" src="https://ultimatecourses.com/static/icons/angular.svg">
-Angular Basics v14: Starter Project
+Angular Basics v15: Starter Project
 </h1>
 <h4 align="center">Starter project for the Ultimate Courses <a href="https://ultimatecourses.com/learn/angular-basics" target="_blank">Angular Basics course</a>.</h4>
 
@@ -11,6 +11,19 @@ Angular Basics v14: Starter Project
 </div>
 
 ---
+
+### Inside the course
+
+* ✅ Template Essentials
+* ✅ Component Architecture
+* ✅ Styles and Encapsulation
+* ✅ Pipes
+* ✅ Rendering Flows
+* ✅ Template Forms and Validation
+* ✅ State Management and Services
+* ✅ Services and API Requests
+* ✅ Routing and Navigation
+* ✅ Standalone Components
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli).
 
