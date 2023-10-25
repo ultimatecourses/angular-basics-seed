@@ -8,6 +8,9 @@ import { DonutListComponent } from './containers/donut-list/donut-list.component
   declarations: [
     DonutListComponent
   ],
+  exports: [
+    DonutListComponent
+  ],
   imports: [
     CommonModule
   ]
