@@ -5,15 +5,30 @@ import * as events from "events";
   selector: 'app-root',
   template: `
     <div class="app">
+      <header class="header">
+        <img src="/assets/img/logo.svg" alt="Ultimate Donuts" class="logo">
+      </header>
       <donut-list></donut-list>
     </div> `,
   styles: [
     `
       .app {
-        margin-top: 50px;
-        font-size: 22px;
-        color: #fff;
-        text-align: center;
+        background: #fff;
+        border-radius: 8px;
+        max-width: 400px;
+        width: 94%;
+        margin: 25px auto;
+        padding: 25px;
+        border: 4px solid #ef9fc7;
+      }
+      .header {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 25px;
+      }
+      .logo {
+        width: 100px;
+        height: 88px;
       }
     `,
   ],
