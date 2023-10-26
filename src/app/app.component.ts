@@ -5,7 +5,7 @@ import * as events from "events";
   selector: 'app-root',
   template: `
     <div class="app">
-      <app-donut-list></app-donut-list>
+      <donut-list></donut-list>
     </div> `,
   styles: [
     `

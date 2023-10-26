@@ -3,25 +3,12 @@ import {Component, OnInit} from '@angular/core';
 import { Donut } from "../../models/donut.model";
 
 @Component({
-  selector: 'app-donut-list',
+  selector: 'donut-list',
   template: `
       <div>
-        <div> <donut-card></donut-card> </div>
-          <div class="donut-card">
-              <img
-                      src="/assets/img/{{ donut.icon }}.svg"
-                      [alt]="donut.name"
-                      class="donut-card-icon"
-              />
-          </div>
-          <div>
-            <p class="dunut-card-name">
-              {{ donut.name }}
-            </p>
-            <p class="dunut-card-price">
-              {{ donut.price }}
-            </p>
-          </div>
+        <div> <donut-card [donut]="donuts[0]"></donut-card> </div>
+        <div> <donut-card [donut]="donuts[1]"></donut-card> </div>
+        <div> <donut-card [donut]="donuts[2]"></donut-card> </div>
       </div>
   `,
   styles: [
@@ -29,10 +16,7 @@ import { Donut } from "../../models/donut.model";
 })
 export class DonutListComponent implements OnInit {
   // Declaratie hier maar vullen in ngOnInit()
-  donut!: Donut;
   donuts!: Donut[];
-
-  constructor() {}
 
   ngOnInit(): void {
     this.donuts = [
@@ -58,6 +42,5 @@ export class DonutListComponent implements OnInit {
         description: 'Chocolate drizzled with caramel',
       }
     ]
-    this.donut = this.donuts[0];
   }
 }
