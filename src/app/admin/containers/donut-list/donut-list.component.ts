@@ -6,11 +6,21 @@ import { Donut } from "../../models/donut.model";
   selector: 'app-donut-list',
   template: `
       <div>
-        // pipe to json
-        {{ donut | json }}
+        <div> <donut-card></donut-card> </div>
+          <div class="donut-card">
+              <img
+                      src="/assets/img/{{ donut.icon }}.svg"
+                      [alt]="donut.name"
+                      class="donut-card-icon"
+              />
+          </div>
           <div>
+            <p class="dunut-card-name">
               {{ donut.name }}
+            </p>
+            <p class="dunut-card-price">
               {{ donut.price }}
+            </p>
           </div>
       </div>
   `,
@@ -29,7 +39,7 @@ export class DonutListComponent implements OnInit {
       {
         id: 'xy12yr',
         name: 'Just Chocolate',
-        icon: 'jus-chocolate',
+        icon: 'just-chocolate',
         price: 119,
         description: 'For the pure chocoholic.',
       },
