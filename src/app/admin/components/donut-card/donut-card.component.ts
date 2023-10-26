@@ -1,8 +1,21 @@
-import {Component, Input} from '@angular/core';
+import {Component, Input, ViewEncapsulation} from '@angular/core';
 import {Donut} from "../../models/donut.model";
 
 @Component({
   selector: 'donut-card',
+  // encapsulation: ViewEncapsulation.Emulated, // Is de default dat wil zeggen dat nu de css van styles.scss genomen wordt
+  encapsulation: ViewEncapsulation.ShadowDom, // Niet van styles.scss maar van styles: [ .app  { margin: 25px auto;
+    // styles: [
+    //   `
+    //   .app {
+    //     background: #fff;
+    //     border-radius: 8px;
+    //     max-width: 400px;
+    //     width: 94%;
+    //     margin: 25px auto;
+    //     padding: 25px;
+    //     border: 4px solid #ef9fc7;
+    //   }
   template: `
       <img
         src="/assets/img/{{ donut.icon }}.svg"
