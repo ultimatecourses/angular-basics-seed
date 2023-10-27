@@ -8,14 +8,9 @@ import {Donut} from "../../models/donut.model";
       <div
               class="donut-card"
               [ngClass]="{
-                'donut-card-promo': donut.promo,
-                'donut-card-not-promo': !donut.promo
+                'donut-card-promo': donut.promo
             }"
       >
-<!--     enkel de TRUE conditions worden toegevoegd in de html >>
-            inspect vb: <div _ngcontent-qke-c12="" class="donut-card donut-card-not-promo"
-            enkel -not-promo wordt toegevoegd indien promo = false
- -->
       <img
         src="/assets/img/{{ donut.icon }}.svg"
         [alt]="donut.name"
@@ -26,10 +21,15 @@ import {Donut} from "../../models/donut.model";
           {{ donut.name }}
         </p>
         <p class="donut-card-price">
-          {{ donut.price }}
+          {{ donut.price / 100 | currency }}
+          {{ donut.price / 100 | currency: 'USD': 'code' }}
+          {{ donut.price / 100 | currency: 'EUR': 'symbol' }}
         </p>
       </div>
     </div>
+<!--    dit is de CurrencyPipe, een pipe '|' + 'currency:'  // | currency: 'USD': 'symbol' is de default
+output: $1.29 USD1.29 €1.29
+-->
 
   `,
   styles: [
