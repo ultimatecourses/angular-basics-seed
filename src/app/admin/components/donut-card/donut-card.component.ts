@@ -3,20 +3,10 @@ import {Donut} from "../../models/donut.model";
 
 @Component({
   selector: 'donut-card',
-  // encapsulation: ViewEncapsulation.Emulated, // Is de default dat wil zeggen dat nu de css van styles.scss genomen wordt
-  encapsulation: ViewEncapsulation.ShadowDom, // Niet van styles.scss maar van styles: [ .app  { margin: 25px auto;
-    // styles: [
-    //   `
-    //   .app {
-    //     background: #fff;
-    //     border-radius: 8px;
-    //     max-width: 400px;
-    //     width: 94%;
-    //     margin: 25px auto;
-    //     padding: 25px;
-    //     border: 4px solid #ef9fc7;
-    //   }
+  encapsulation: ViewEncapsulation.Emulated, // Is de default dat wil zeggen dat nu de css van styles.scss genomen wordt
   template: `
+    <div class="donut-card"
+          [style.border]="donut.promo ? '2px solid #eee': 'none' ">
       <img
         src="/assets/img/{{ donut.icon }}.svg"
         [alt]="donut.name"
@@ -30,11 +20,12 @@ import {Donut} from "../../models/donut.model";
           {{ donut.price }}
         </p>
       </div>
+    </div>
 
   `,
   styles: [
     `
-      :host {
+      .donut-card {
         display: flex;
         align-items: center;
         background: #f7f7f7;
@@ -45,8 +36,6 @@ import {Donut} from "../../models/donut.model";
         &:hover {
           transform: translateY(-3px);
         }
-      }
-      .donut-card { // verwijst naar <div class="donut-card">
         &-name {  // nieuw in "style": "scss" Hierdoor hoef je niet de volledige class op te geven en verwijst naar <p class="donut-card-name">
                   // "scss" wordt uitgesproken als sass
           font-size: 16px;
