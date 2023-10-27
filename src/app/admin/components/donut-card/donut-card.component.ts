@@ -5,14 +5,8 @@ import {Donut} from "../../models/donut.model";
   selector: 'donut-card',
   encapsulation: ViewEncapsulation.Emulated, // Is de default dat wil zeggen dat nu de css van styles.scss genomen wordt
   template: `
-      <div class="donut-card"
-           [ngStyle]=" {
-                border: donut.promo ? '2px solid #eee': 'none',
-                'background-color': donut.promo ? 'red': 'green',
-                'font-size.px': 26
-          }"
+      <div class="donut-card" [class.donut-card-promo]="donut.promo"
            >
-        <!-- commented out in styles: [...-->
       <img
         src="/assets/img/{{ donut.icon }}.svg"
         [alt]="donut.name"
@@ -43,11 +37,14 @@ import {Donut} from "../../models/donut.model";
           transform: translateY(-3px);
         }
         &-name {
-          //font-size: 16px;
+          font-size: 16px;
         }
         &-price {
-          //font-size: 14px;
+          font-size: 14px;
           color: #c14583;
+        }
+        &-promo {
+          border: 2px solid #eee;
         }
         &-icon {
           width: 50px;

@@ -25,7 +25,6 @@ export class DonutListComponent implements OnInit {
         name: 'Just Chocolate',
         icon: 'just-chocolate',
         price: 119,
-        promo: true,
         description: 'For the pure chocoholic.',
       },
       {
@@ -33,6 +32,7 @@ export class DonutListComponent implements OnInit {
         name: 'Glazed Fudge',
         icon: 'glazed-fudge',
         price: 129,
+        promo: true,
         description: 'Sticky perfection.',
       },
       {
