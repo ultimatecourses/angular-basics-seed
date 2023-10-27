@@ -5,8 +5,17 @@ import {Donut} from "../../models/donut.model";
   selector: 'donut-card',
   encapsulation: ViewEncapsulation.Emulated, // Is de default dat wil zeggen dat nu de css van styles.scss genomen wordt
   template: `
-      <div class="donut-card" [class.donut-card-promo]="donut.promo"
-           >
+      <div
+              class="donut-card"
+              [ngClass]="{
+                'donut-card-promo': donut.promo,
+                'donut-card-not-promo': !donut.promo
+            }"
+      >
+<!--     enkel de TRUE conditions worden toegevoegd in de html >>
+            inspect vb: <div _ngcontent-qke-c12="" class="donut-card donut-card-not-promo"
+            enkel -not-promo wordt toegevoegd indien promo = false
+ -->
       <img
         src="/assets/img/{{ donut.icon }}.svg"
         [alt]="donut.name"
