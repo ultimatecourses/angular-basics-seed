@@ -22,15 +22,9 @@ import {Donut} from "../../models/donut.model";
         </p>
         <p class="donut-card-price">
           {{ donut.price / 100 | currency }}
-          {{ donut.price / 100 | currency: 'USD': 'code' }}
-          {{ donut.price / 100 | currency: 'EUR': 'symbol' }}
         </p>
       </div>
     </div>
-<!--    dit is de CurrencyPipe, een pipe '|' + 'currency:'  // | currency: 'USD': 'symbol' is de default
-output: $1.29 USD1.29 €1.29
--->
-
   `,
   styles: [
     `
