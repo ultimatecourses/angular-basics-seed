@@ -5,13 +5,19 @@ import { Donut } from "../../models/donut.model";
 @Component({
   selector: 'donut-list',
   template: `
-      <div>
-        <div *ngIf="donuts.length">
-        <donut-card [donut]="donuts[0]"></donut-card>
-        <donut-card [donut]="donuts[1]"></donut-card>
-        <donut-card [donut]="donuts[2]"></donut-card>
-        </div>
+      <div id="krko">
+          <ng-container *ngIf="donuts.length; then cards; else nothing">
+          </ng-container>
       </div>
+
+      <ng-template #cards>
+          <donut-card [donut]="donuts[0]"></donut-card>
+          <donut-card [donut]="donuts[1]"></donut-card>
+          <donut-card [donut]="donuts[2]"></donut-card>
+      </ng-template>
+      <ng-template #nothing>
+          <p>No Donust here..</p>
+      </ng-template>
   `,
   styles: [
   ]
