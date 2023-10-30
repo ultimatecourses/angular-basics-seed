@@ -5,34 +5,18 @@ import { Donut } from "../../models/donut.model";
 @Component({
   selector: 'donut-list',
   template: `
-        // ng-container vs ng-template:
-        // Een ng-container wordt altijd gerendered
-        // terwijl een ng-template pas gerenderd wordt op basis van een voorwaarde
-        // Volgende zijn gelijk
-        <div>
-            <ng-container *ngIf="donuts.length; else nothing">
-                <donut-card [donut]="donuts[0]"></donut-card>
-                <donut-card [donut]="donuts[1]"></donut-card>
-                <donut-card [donut]="donuts[2]"></donut-card>
-            </ng-container>
+      <div>
+          <ng-container *ngIf="donuts.length; else nothing">
+              <donut-card
+                      *ngFor="let donut of donuts"
+                      [donut]="donut">
+              </donut-card>
+          </ng-container>
 
-            <ng-template [ngIf]="donuts.length" [ngIfElse]="nothing">
-                <donut-card [donut]="donuts[0]"></donut-card>
-                <donut-card [donut]="donuts[1]"></donut-card>
-                <donut-card [donut]="donuts[2]"></donut-card>
-            </ng-template>
-
-          // Volgende wordt niet gerenderd
-            <ng-template>
-                <donut-card [donut]="donuts[0]"></donut-card>
-                <donut-card [donut]="donuts[1]"></donut-card>
-                <donut-card [donut]="donuts[2]"></donut-card>
-            </ng-template>
-
-            <ng-template #nothing>
-                <p>No Donust here..</p>
-            </ng-template>
-        </div>
+          <ng-template #nothing>
+              <p>No Donust here..</p>
+          </ng-template>
+      </div>
   `,
   styles: [
   ]
