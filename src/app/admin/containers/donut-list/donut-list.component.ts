@@ -11,7 +11,11 @@ import { Donut } from "../../models/donut.model";
                       *ngFor="let donut of donuts; trackBy: trackById;"
                       [donut]="donut">
               </donut-card>
-
+            // Bovenste *ngIf (astrix staat voor template, angular zet dit achterliggend om naar:
+              <ng-template ngFor [ngForOf]="donuts" let-donut let-i="index">
+                  <donut-card [donut]="donut"></donut-card>
+                {{ i }}
+              </ng-template>
           </ng-container>
 
           <ng-template #nothing>
