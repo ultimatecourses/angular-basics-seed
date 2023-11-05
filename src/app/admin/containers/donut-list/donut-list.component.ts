@@ -11,11 +11,6 @@ import { Donut } from "../../models/donut.model";
                       *ngFor="let donut of donuts; trackBy: trackById;"
                       [donut]="donut">
               </donut-card>
-            // Bovenste *ngIf (astrix staat voor template, angular zet dit achterliggend om naar:
-              <ng-template ngFor [ngForOf]="donuts" let-donut let-i="index">
-                  <donut-card [donut]="donut"></donut-card>
-                {{ i }}
-              </ng-template>
           </ng-container>
 
           <ng-template #nothing>
@@ -37,6 +32,7 @@ export class DonutListComponent implements OnInit {
         name: 'Just Chocolate',
         icon: 'just-chocolate',
         price: 119,
+        promo: 'limited',
         description: 'For the pure chocoholic.',
       },
       {
@@ -44,7 +40,7 @@ export class DonutListComponent implements OnInit {
         name: 'Glazed Fudge',
         icon: 'glazed-fudge',
         price: 129,
-        promo: true,
+        promo: 'new',
         description: 'Sticky perfection.',
       },
       {
@@ -53,6 +49,20 @@ export class DonutListComponent implements OnInit {
         icon: 'caramel-swirl',
         price: 129,
         description: 'Chocolate drizzled with caramel',
+      },
+      {
+        id: '2dfe5',
+        name: 'Sour Supreme',
+        icon: 'sour-supreme',
+        price: 139,
+        description: 'For the sour advocate.',
+      },
+      {
+        id: 'a6rfg',
+        name: 'Zesty Lemon',
+        icon: 'zesty-lemon',
+        price: 129,
+        description: 'Delicious luscious lemon.',
       }
     ]
   }

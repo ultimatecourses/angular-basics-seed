@@ -3,6 +3,6 @@ export interface Donut {
   name: string;
   icon: string;
   price: number;
-  promo?: boolean;
+  promo?: 'new' | 'limited';
   description: string;
 }
