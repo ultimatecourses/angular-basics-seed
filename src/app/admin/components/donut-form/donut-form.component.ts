@@ -1,15 +1,24 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-donut-form',
+  selector: 'donut-form',
   template: `
-    <p>
-      donut-form works!
-    </p>
+    <form class="donut-form" #form="ngForm">
+      <label>
+        <span>Name</span>
+        <input type="text" name="name" class="input" ngModel/>
+        <span>Price</span>
+        <input type="number" name="price" class="input" ngModel/>
+      </label>
+     <pre> {{ form.value | json}} </pre>
+    </form>
   `,
   styles: [
   ]
 })
-export class DonutFormComponent {
-
+export class DonutFormComponent implements OnInit {
+  constructor() {
+  }
+  ngOnInit(): void {
+  }
 }
