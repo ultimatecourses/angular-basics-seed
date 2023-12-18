@@ -6,16 +6,12 @@ import {Component, OnInit} from '@angular/core';
     <form class="donut-form" #form="ngForm">
       <label>
         <span>Name</span>
-        <input type="text" name="name" class="input" ngModel/>
+        <input type="text" name="name" class="input" required ngModel/>
       </label>
 
       <label>
         <span>Icon</span>
-        <select
-          name="icon"
-          class="input input--select"
-          ngModel
-        >
+        <select name="icon" class="input input--select" required ngModel>
           <option *ngFor=" let icon of icons" [ngValue]="icon">
             {{icon}}
           </option>
@@ -24,22 +20,22 @@ import {Component, OnInit} from '@angular/core';
 
       <label>
         <span>Price</span>
-        <input type="number" name="price" class="input" ngModel/>
+        <input type="number" name="price" class="input" required ngModel/>
       </label>
 
       <div class="donut-form-radios">
         <p class="donut-form-radios-label">Promo:</p>
         <label>
 <!--          [value] >> property binding. Met undefined kan je de promo weg laten in de json  -->
-          <input type="radio" name="promo" [value]="undefined" ngModel/>
+          <input type="radio" name="promo" [value]="undefined" required ngModel/>
           <span>None</span>
         </label>
         <label>
-          <input type="radio" name="promo" value="new" ngModel/>
+          <input type="radio" name="promo" value="new" required ngModel/>
           <span>New</span>
         </label>
         <label>
-          <input type="radio" name="promo" value="limited" ngModel/>
+          <input type="radio" name="promo" value="limited" required ngModel/>
           <span>Limited</span>
         </label>
       </div>
@@ -49,11 +45,12 @@ import {Component, OnInit} from '@angular/core';
         <textarea
           name="description"
           class="input input--textarea"
+          required
           ngModel
         ></textarea>
       </label>
 
-     <pre> {{ form.value | json }} </pre>
+     <pre> {{ form.form.status | json }} </pre>
     </form>
   `,
   styles: [
