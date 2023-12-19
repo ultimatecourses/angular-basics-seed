@@ -8,7 +8,7 @@ import * as events from "events";
       <header class="header">
         <img src="/assets/img/logo.svg" alt="Ultimate Donuts" class="logo">
       </header>
-      <donut-form></donut-form>
+      <donut-single></donut-single>
     </div> `,
   styles: [
     `

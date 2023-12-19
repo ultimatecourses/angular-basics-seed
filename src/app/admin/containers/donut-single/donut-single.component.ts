@@ -1,15 +1,21 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {Donut} from "../../models/donut.model";
 
 @Component({
   selector: 'donut-single',
   template: `
-    <p>
-      donut-single works!
-    </p>
+   <div>
+     <donut-form (create)="onCreate($event)" ></donut-form>
+   </div>
   `,
   styles: [
   ]
 })
-export class DonutSingleComponent {
+export class DonutSingleComponent implements  OnInit {
+  constructor() {}
+  ngOnInit(): void {}
 
+  onCreate(donut: Donut) {
+    console.log('onCreate', donut)
+  }
 }
