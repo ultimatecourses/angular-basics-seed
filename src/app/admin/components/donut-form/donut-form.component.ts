@@ -74,8 +74,10 @@ import {NgForm} from "@angular/forms";
         </ng-container>
       </label>
 
-      <button type="submit" class="btn btn--green" >Create</button>
-     <pre> {{ form.value | json }} </pre>
+      <button type="submit" class="btn btn--green">Create</button>
+      <button type="button" class="btn btn--grey" (click)="form.resetForm()">Reset Form</button>
+
+      <pre> {{ form.value | json }} </pre>
     </form>
   `,
   styles: [
