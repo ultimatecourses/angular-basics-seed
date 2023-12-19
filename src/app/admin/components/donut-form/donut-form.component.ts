@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Output} from '@angular/core';
+import {Component, Input, Output, EventEmitter} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Donut} from "../../models/donut.model";
 
@@ -14,7 +14,7 @@ import {Donut} from "../../models/donut.model";
           class="input"
           required
           minlength="5"
-          ngModel
+          [ngModel]="donut.name"
           [ngModelOptions]="{ updateOn: 'blur' }"
           #name="ngModel"
         />
@@ -26,7 +26,7 @@ import {Donut} from "../../models/donut.model";
 
       <label>
         <span>Icon</span>
-        <select name="icon" class="input input--select" required ngModel #icon="ngModel">
+        <select name="icon" class="input input--select" required  [ngModel]="donut.icon" #icon="ngModel">
           <option *ngFor=" let icon of icons" [ngValue]="icon">
             {{icon}}
           </option>
@@ -38,7 +38,7 @@ import {Donut} from "../../models/donut.model";
 
       <label>
         <span>Price</span>
-        <input type="number" name="price" class="input" required ngModel #price="ngModel"/>
+        <input type="number" name="price" class="input" required [ngModel]="donut.price" #price="ngModel"/>
         <ng-container *ngIf="price.invalid && price.touched">
           <div class="donut-form-error" *ngIf="price.errors?.required">Price is required.</div>
         </ng-container>
@@ -48,15 +48,15 @@ import {Donut} from "../../models/donut.model";
         <p class="donut-form-radios-label">Promo:</p>
         <label>
 <!--          [value] >> property binding. Met undefined kan je de promo weg laten in de json  -->
-          <input type="radio" name="promo" [value]="undefined" ngModel/>
+          <input type="radio" name="promo" [value]="undefined" [ngModel]="donut.promo"/>
           <span>None</span>
         </label>
         <label>
-          <input type="radio" name="promo" value="new" ngModel/>
+          <input type="radio" name="promo" value="new" [ngModel]="donut.promo"/>
           <span>New</span>
         </label>
         <label>
-          <input type="radio" name="promo" value="limited" ngModel/>
+          <input type="radio" name="promo" value="limited" [ngModel]="donut.promo"/>
           <span>Limited</span>
         </label>
       </div>
@@ -67,7 +67,7 @@ import {Donut} from "../../models/donut.model";
           name="description"
           class="input input--textarea"
           required
-          ngModel
+          [ngModel]="donut.description"
           #description="ngModel"
         ></textarea>
         <ng-container *ngIf="description.invalid && description.touched">
@@ -82,6 +82,7 @@ import {Donut} from "../../models/donut.model";
         Working...
       </div>
 
+      <pre> {{ donut | json }} </pre>
       <pre> {{ form.value | json }} </pre>
     </form>
   `,
@@ -118,6 +119,7 @@ import {Donut} from "../../models/donut.model";
 })
 export class DonutFormComponent {
 
+  @Input() donut!: Donut;
   @Output() create = new EventEmitter<Donut>()
 
   icons: string[] = [
