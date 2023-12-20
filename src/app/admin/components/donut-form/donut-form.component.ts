@@ -1,11 +1,11 @@
-import {Component, Input, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {Donut} from "../../models/donut.model";
 
 @Component({
   selector: 'donut-form',
   template: `
-    <form class="donut-form" (ngSubmit)="handleSubmit(form)" #form="ngForm">
+    <form class="donut-form" #form="ngForm">
       <label>
         <span>Name</span>
         <input
@@ -19,14 +19,14 @@ import {Donut} from "../../models/donut.model";
           #name="ngModel"
         />
         <ng-container *ngIf="name.invalid && name.touched">
-         <div class="donut-form-error" *ngIf="name.errors?.minlength">Minimum length of a name is 5!.</div>
-         <div class="donut-form-error" *ngIf="name.errors?.required">Name is required.</div>
-       </ng-container>
+          <div class="donut-form-error" *ngIf="name.errors?.minlength">Minimum length of a name is 5!.</div>
+          <div class="donut-form-error" *ngIf="name.errors?.required">Name is required.</div>
+        </ng-container>
       </label>
 
       <label>
         <span>Icon</span>
-        <select name="icon" class="input input--select" required  [ngModel]="donut.icon" #icon="ngModel">
+        <select name="icon" class="input input--select" required [ngModel]="donut.icon" #icon="ngModel">
           <option *ngFor=" let icon of icons" [ngValue]="icon">
             {{icon}}
           </option>
@@ -47,7 +47,7 @@ import {Donut} from "../../models/donut.model";
       <div class="donut-form-radios">
         <p class="donut-form-radios-label">Promo:</p>
         <label>
-<!--          [value] >> property binding. Met undefined kan je de promo weg laten in de json  -->
+          <!--          [value] >> property binding. Met undefined kan je de promo weg laten in de json  -->
           <input type="radio" name="promo" [value]="undefined" [ngModel]="donut.promo"/>
           <span>None</span>
         </label>
@@ -75,7 +75,9 @@ import {Donut} from "../../models/donut.model";
         </ng-container>
       </label>
 
-      <button type="submit" class="btn btn--green">Create</button>
+      <button type="button" class="btn btn--green" (click)="handleCreate(form)">Create</button>
+      <button type="button" class="btn btn--green" [disabled]="form.untouched" (click)="handleUpdate(form)">Update
+      </button>
       <button type="button" class="btn btn--grey" (click)="form.resetForm()">Reset Form</button>
 
       <div class="donut-form-working" *ngIf="form.valid && form.submitted">
@@ -86,38 +88,44 @@ import {Donut} from "../../models/donut.model";
   styles: [
     `
       .donut-form {
-      &-radios {
-        display: flex;
-        align-content: center;
-        &-label {
-          margin-right: 10px;
-        }
-        label {
+        &-radios {
           display: flex;
-          align-items: center;
-          span {
-            color: #444;
-            margin-bottom: 0;
+          align-content: center;
+
+          &-label {
+            margin-right: 10px;
+          }
+
+          label {
+            display: flex;
+            align-items: center;
+
+            span {
+              color: #444;
+              margin-bottom: 0;
+            }
           }
         }
-      }
+
         &-working {
           font-size: 12px;
           font-style: italic;
           margin: 10px 0;
         }
+
         &-error {
           font-size: 12px;
           color: #e66262;
         }
-    }
-  `
+      }
+    `
   ]
 })
 export class DonutFormComponent {
 
   @Input() donut!: Donut;
   @Output() create = new EventEmitter<Donut>()
+  @Output() update = new EventEmitter<Donut>()
 
   icons: string[] = [
     'caramel-swirl',
@@ -129,12 +137,21 @@ export class DonutFormComponent {
     'zesty-lemon',
   ]
 
-  constructor() {}
+  constructor() {
+  }
 
-  handleSubmit(form: NgForm) {
+  handleCreate(form: NgForm) {
     if (form.valid) {
       this.create.emit(form.value)
-    }else {
+    } else {
+      form.form.markAllAsTouched()
+    }
+  }
+
+  handleUpdate(form: NgForm) {
+    if (form.valid) {
+      this.update.emit({id: this.donut.id, ...form.value})
+    } else {
       form.form.markAllAsTouched()
     }
   }

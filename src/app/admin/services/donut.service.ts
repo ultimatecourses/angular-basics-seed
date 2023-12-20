@@ -1,11 +1,11 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Donut} from "../models/donut.model";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DonutService {
-  private donuts: Donut[] =  [
+  private donuts: Donut[] = [
     {
       id: 'xy12yr',
       name: 'Just Chocolate',
@@ -44,7 +44,9 @@ export class DonutService {
       description: 'Delicious luscious lemon.',
     }
   ];
-  constructor() { }
+
+  constructor() {
+  }
 
   read() {
     return this.donuts;
@@ -60,6 +62,16 @@ export class DonutService {
 
   create(payload: Donut) {
     this.donuts = [...this.donuts, payload]
+    console.log(this.donuts);
+  }
+
+  update(payload: Donut) {
+    this.donuts = this.donuts.map((donut: Donut) => {
+      if (donut.id === payload.id) {
+        return payload;
+      }
+      return donut;
+    })
     console.log(this.donuts);
   }
 }
