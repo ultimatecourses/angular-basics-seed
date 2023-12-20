@@ -57,4 +57,9 @@ export class DonutService {
     }
     return {name: '', icon: '', price: 0, description: ''};
   }
+
+  create(payload: Donut) {
+    this.donuts = [...this.donuts, payload]
+    console.log(this.donuts);
+  }
 }
