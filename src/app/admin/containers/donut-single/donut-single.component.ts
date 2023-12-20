@@ -6,7 +6,12 @@ import {DonutService} from "../../services/donut.service";
   selector: 'donut-single',
   template: `
     <div>
-      <donut-form [donut]="donut" (create)="onCreate($event)" (update)="onUpdate($event)"></donut-form>
+      <donut-form
+        [donut]="donut"
+        (create)="onCreate($event)"
+        (update)="onUpdate($event)"
+        (delete)="onDelete($event)"
+      ></donut-form>
     </div>
   `,
   styles: []
@@ -28,5 +33,9 @@ export class DonutSingleComponent implements OnInit {
 
   onUpdate(donut: Donut) {
     this.donutService.update(donut);
+  }
+
+  onDelete(donut: Donut) {
+    this.donutService.delete(donut);
   }
 }
