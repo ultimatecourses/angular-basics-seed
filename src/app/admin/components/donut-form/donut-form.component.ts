@@ -5,7 +5,7 @@ import {Donut} from "../../models/donut.model";
 @Component({
   selector: 'donut-form',
   template: `
-    <form class="donut-form" #form="ngForm">
+    <form class="donut-form" #form="ngForm" *ngIf="donut else loading;">
       <label>
         <span>Name</span>
         <input
@@ -86,6 +86,8 @@ import {Donut} from "../../models/donut.model";
         Working...
       </div>
     </form>
+
+    <ng-template #loading>Loading...</ng-template>
   `,
   styles: [
     `
