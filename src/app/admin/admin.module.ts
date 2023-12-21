@@ -1,14 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
 
 // containers
-import { DonutListComponent } from './containers/donut-list/donut-list.component';
-import { DonutSingleComponent } from './containers/donut-single/donut-single.component';
+import {DonutListComponent} from './containers/donut-list/donut-list.component';
+import {DonutSingleComponent} from './containers/donut-single/donut-single.component';
 
 // components
-import { DonutCardComponent } from './components/donut-card/donut-card.component';
-import { DonutFormComponent } from './components/donut-form/donut-form.component';
+import {DonutCardComponent} from './components/donut-card/donut-card.component';
+import {DonutFormComponent} from './components/donut-form/donut-form.component';
 
 @NgModule({
   declarations: [
@@ -21,9 +22,10 @@ import { DonutFormComponent } from './components/donut-form/donut-form.component
     DonutListComponent, DonutSingleComponent, DonutFormComponent
   ],
   imports: [
-    CommonModule, FormsModule
+    CommonModule, FormsModule, HttpClientModule
   ]
 })
-export class AdminModule { }
+export class AdminModule {
+}
 
 
