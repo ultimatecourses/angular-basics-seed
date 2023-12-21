@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import * as events from "events";
+import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +7,7 @@ import * as events from "events";
       <header class="header">
         <img src="/assets/img/logo.svg" alt="Ultimate Donuts" class="logo">
       </header>
-      <donut-single></donut-single>
+      <donut-list></donut-list>
     </div> `,
   styles: [
     `
@@ -21,11 +20,13 @@ import * as events from "events";
         padding: 25px;
         border: 4px solid #ef9fc7;
       }
+
       .header {
         display: flex;
         justify-content: center;
         margin-bottom: 25px;
       }
+
       .logo {
         width: 100px;
         height: 88px;
@@ -38,7 +39,7 @@ export class AppComponent implements OnInit {
   newMessage!: string;
 
   ngOnInit() {
-   this.message = 'Value on init';
+    this.message = 'Value on init';
   }
 
   handleClick(event: MouseEvent) {
@@ -46,8 +47,8 @@ export class AppComponent implements OnInit {
   }
 
   handleInput(event: Event) {
-    const { value } = event.target as HTMLInputElement;
+    const {value} = event.target as HTMLInputElement;
     console.log(value);
     this.newMessage = value;
-   }
+  }
 }
