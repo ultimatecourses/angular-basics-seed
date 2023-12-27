@@ -21,6 +21,7 @@
       "name": "Caramel Swirl",
       "icon": "caramel-swirl",
       "price": 129,
+      "promo": "new",
       "description": "Chocolate drizzled with caramel"
     },
     {
