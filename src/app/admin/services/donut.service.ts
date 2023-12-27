@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 
-import {tap, of, map} from "rxjs";
+import {tap, of, map, catchError, throwError} from "rxjs";
 
 import {Donut} from "../models/donut.model";
 
@@ -33,28 +33,34 @@ export class DonutService {
           return donut;
         }
         return {name: '', icon: '', price: 0, description: ''};
-      })
+      }),
+      catchError(this.handleError)
     );
   }
 
   create(payload: Donut) {
-    return this.http.post<Donut>(`/api/donuts`, payload).pipe(
-      tap((donut) => {
-        this.donuts = [...this.donuts, donut]
-      })
-    )
+    return this.http.post<Donut>(`/api/donuts`, payload)
+      .pipe(
+        tap((donut) => {
+          this.donuts = [...this.donuts, donut]
+        }),
+        catchError(this.handleError)
+      )
   }
 
   update(payload: Donut) {
     return this.http.put<Donut>(`/api/donuts/${payload.id}`, payload)
-      .pipe(tap((donut) => {
-        this.donuts = this.donuts.map((item: Donut) => {
-          if (item.id === donut.id) {
-            return donut;
-          }
-          return item;
-        })
-      }));
+      .pipe(
+        tap((donut) => {
+          this.donuts = this.donuts.map((item: Donut) => {
+            if (item.id === donut.id) {
+              return donut;
+            }
+            return item;
+          });
+        }),
+        catchError(this.handleError)
+      );
   }
 
   delete(payload: Donut) {
@@ -62,7 +68,19 @@ export class DonutService {
       .pipe(
         tap(() => {
           this.donuts = this.donuts.filter((donut: Donut) => donut.id !== payload.id);
-        })
+        }),
+        catchError(this.handleError)
       )
+  }
+
+  private handleError(err: HttpErrorResponse) {
+    if (err.error instanceof ErrorEvent) {
+      // client-side
+      console.warn('Client', err.message);
+    } else {
+      // server-side
+      console.warn('Server', err.status);
+    }
+    return throwError(() => new Error(err.message));
   }
 }
