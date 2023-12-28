@@ -1,7 +1,7 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {FormsModule} from "@angular/forms";
-import {HttpClientModule} from "@angular/common/http";
+import {RouterModule, Routes} from "@angular/router";
 
 // containers
 import {DonutListComponent} from './containers/donut-list/donut-list.component';
@@ -11,6 +11,14 @@ import {DonutSingleComponent} from './containers/donut-single/donut-single.compo
 import {DonutCardComponent} from './components/donut-card/donut-card.component';
 import {DonutFormComponent} from './components/donut-form/donut-form.component';
 
+export const routes: Routes =  [
+    { path: 'donuts', component: DonutListComponent },
+    { path: 'donut', component: DonutSingleComponent },
+    // redirects http://localhost:4200/admin to http://localhost:4200/admin/donuts
+    // put always at the end
+    { path: '', pathMatch: 'full', redirectTo: 'donuts' },
+  ];
+
 @NgModule({
   declarations: [
     DonutListComponent,
@@ -18,11 +26,8 @@ import {DonutFormComponent} from './components/donut-form/donut-form.component';
     DonutCardComponent,
     DonutFormComponent,
   ],
-  exports: [
-    DonutListComponent, DonutSingleComponent, DonutFormComponent
-  ],
   imports: [
-    CommonModule, FormsModule, HttpClientModule
+    CommonModule, FormsModule, RouterModule.forChild(routes)
   ]
 })
 export class AdminModule {
