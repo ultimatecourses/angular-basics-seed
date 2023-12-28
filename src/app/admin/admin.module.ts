@@ -13,7 +13,7 @@ import {DonutFormComponent} from './components/donut-form/donut-form.component';
 
 export const routes: Routes =  [
     { path: 'donuts', component: DonutListComponent },
-    { path: 'donut', component: DonutSingleComponent },
+    { path: 'donuts/new', component: DonutSingleComponent },
     // redirects http://localhost:4200/admin to http://localhost:4200/admin/donuts
     // put always at the end
     { path: '', pathMatch: 'full', redirectTo: 'donuts' },

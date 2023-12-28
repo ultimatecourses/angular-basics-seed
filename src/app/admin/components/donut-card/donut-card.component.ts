@@ -5,8 +5,9 @@ import {Donut} from "../../models/donut.model";
   selector: 'donut-card',
   encapsulation: ViewEncapsulation.Emulated, // Is de default dat wil zeggen dat nu de css van styles.scss genomen wordt
   template: `
-      <div
+      <a
               class="donut-card"
+              [routerLink]="donut.id"
               [ngClass]="{
                 'donut-card-promo': donut.promo
             }"
@@ -31,7 +32,7 @@ import {Donut} from "../../models/donut.model";
           {{ donut.price / 100 | currency }}
         </p>
       </div>
-    </div>
+    </a>
   `,
   styles: [
     `
