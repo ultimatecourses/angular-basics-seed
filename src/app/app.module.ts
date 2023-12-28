@@ -26,6 +26,12 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: 'admin',
   },
+  {
+    // Wild card selector redirects misspelled paths
+    // eg. http://localhost:4200/addddminnnn to http://localhost:4200/admin
+    path: '**',
+    redirectTo: 'admin',
+  },
 ];
 @NgModule({
   declarations: [AppComponent],
