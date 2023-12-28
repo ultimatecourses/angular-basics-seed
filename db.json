@@ -4,8 +4,8 @@
       "id": "xy12yr",
       "name": "Just Chocolate",
       "icon": "just-chocolate",
-      "price": 119,
-      "promo": "limited",
+      "price": 120,
+      "promo": "new",
       "description": "For the pure chocoholic."
     },
     {
@@ -37,6 +37,14 @@
       "icon": "zesty-lemon",
       "price": 129,
       "description": "Delicious luscious lemon."
+    },
+    {
+      "name": "teestfff",
+      "icon": "glazed-fudge",
+      "price": 3,
+      "promo": "limited",
+      "description": "qdsqsdf",
+      "id": "RF-n7_z"
     }
   ]
 }
