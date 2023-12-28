@@ -11,14 +11,14 @@ import {DonutSingleComponent} from './containers/donut-single/donut-single.compo
 import {DonutCardComponent} from './components/donut-card/donut-card.component';
 import {DonutFormComponent} from './components/donut-form/donut-form.component';
 
-export const routes: Routes =  [
-    { path: 'donuts', component: DonutListComponent },
-    { path: 'donuts/new', component: DonutSingleComponent },
-    { path: 'donuts/:id', component: DonutSingleComponent },
-    // redirects http://localhost:4200/admin to http://localhost:4200/admin/donuts
-    // put always at the end
-    { path: '', pathMatch: 'full', redirectTo: 'donuts' },
-  ];
+export const routes: Routes = [
+  {path: 'donuts', component: DonutListComponent},
+  {path: 'donuts/new', component: DonutSingleComponent, data: {isEdit: false}},
+  {path: 'donuts/:id', component: DonutSingleComponent, data: {isEdit: true}},
+  // redirects http://localhost:4200/admin to http://localhost:4200/admin/donuts
+  // put always at the end
+  {path: '', pathMatch: 'full', redirectTo: 'donuts'},
+];
 
 @NgModule({
   declarations: [
